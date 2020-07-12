@@ -1,2 +1,5 @@
 # PokeHunt
-Pokemon Display and Ranking
+
+Client Side Pokemon Ranking Display
+
+Interactive to vote the preferences of Popular Pokemon
