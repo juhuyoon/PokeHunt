@@ -1,33 +1,26 @@
 class PokemonList extends React.Component {
     constructor(props) {
         super(props);
-
+        // Good practice to initialize components with "empty states"
         this.state = {
-            products: []
+            pokemons: []
         }
+    }
+
+    componentDidMount() {
+        this.setState({pokemons: Seed.pokemons})
     }
     // passing the function down to the child component 
     handlePokemonUpVote(pokemonId) {
         console.log(pokemonId + ' was upvoted');
     }
     render() {
-        // implicit return
-        /*
-        const pokemon = Seed.products.sort((a,b) => (
-            b.votes - a.votes
-        )) 
-        */
-    //    Create a copy of the array to not mutate main array
-    //    Note: this is a shallow copy, there is also a deep copy. 
-       let copyOfPokemon = Array.prototype.slice.call(Seed.pokemons);
-       console.log("Copy of Array", copyOfPokemon)
-       console.log("Main Array ", Seed.pokemon);
-        const pokemons = copyOfPokemon.sort((a, b) => {
+        const pokemons = this.state.pokemons.sort((a, b) => {
             return (b.votes - a.votes)
             // Compare function of Array.prototype.sort()
         })
         // productComponents Array
-        const pokemonComponents = copyOfPokemon.map((pokemon) => {
+        const pokemonComponents = pokemons.map((pokemon) => {
             return <Pokemon 
             // Key is used as a unique binding for each component
             key= {'pokemon- ' + pokemon.id}

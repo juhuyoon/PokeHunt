@@ -3,7 +3,7 @@ window.Seed = (function() {
     return Math.floor((Math.random()* 50) + 15);
   }
 
-const pokemon = [
+const pokemons = [
   {
     id: 1,
     title: 'Absol', 
@@ -177,5 +177,5 @@ const pokemon = [
   },
 ]
 
-return {pokemon : pokemon};
+return {pokemons : pokemons};
 }()); 
