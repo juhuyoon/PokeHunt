@@ -2,17 +2,37 @@ class PokemonList extends React.Component {
     constructor(props) {
         super(props);
         // Good practice to initialize components with "empty states"
+        // Should consider this.state object as immutable
+        // Only modifies through using this.setState()
         this.state = {
-            pokemons: []
+            pokemons: [],
         }
+
+        this.handlePokemonUpVote = this.handlePokemonUpVote.bind(this);
     }
 
     componentDidMount() {
+        // setState() is asynchronous
+        // Thus no guarantee when React will update the state & re-render component.
         this.setState({pokemons: Seed.pokemons})
     }
     // passing the function down to the child component 
     handlePokemonUpVote(pokemonId) {
-        console.log(pokemonId + ' was upvoted');
+        // Traverses the array AND returns a NEW array as opposed to 
+        // changing directly the array in state. 
+        const pokemonObjects  = this.state.pokemons.map((pokemon) => {
+            if(pokemon.id === pokemonId) {
+                return Object.assign({}, pokemon, {
+                    votes: pokemon.votes +1
+                });
+            } else {
+                return pokemon;
+            }
+        })
+        this.setState({
+            pokemons: pokemonObjects
+        })
+        console.log(pokemonObjects);
     }
     render() {
         const pokemons = this.state.pokemons.sort((a, b) => {
