@@ -3,7 +3,7 @@ window.Seed = (function() {
     return Math.floor((Math.random()* 50) + 15);
   }
 
-const products = [
+const pokemon = [
   {
     id: 1,
     title: 'Absol', 
@@ -28,7 +28,7 @@ const products = [
     description: 'Fire/Fighting Pokemon, can upper kick in the air',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: 'images/avatars/elyse.jpg',
+    submitterAvatarUrl: 'images/avatars/elyse.png',
     pokemonImageUrl: 'images/pokemon/blaziken.jpg',
   },
   {
@@ -64,7 +64,7 @@ const products = [
     description: 'Psyhic/Fairy Pokemon, known for its ability to recognize and calm emotions',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: 'images/avatars/kristy.jpg',
+    submitterAvatarUrl: 'images/avatars/kristy.png',
     pokemonImageUrl: 'images/pokemon/gardevoir.jpg',
   },
   {
@@ -73,7 +73,7 @@ const products = [
     description: 'Ghost/Poison Pokemon, a prankster who likes to torment people in their dreams',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: 'images/avatars/matthew.jpg',
+    submitterAvatarUrl: 'images/avatars/matthew.png',
     pokemonImageUrl: 'images/pokemon/gengar.jpg',
   },
   {
@@ -82,7 +82,7 @@ const products = [
     description: 'Fighting/Steel Pokemon, known as a protector of man and a knight of valor',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: 'images/avatars/molly.jpg',
+    submitterAvatarUrl: 'images/avatars/molly.png',
     pokemonImageUrl: 'images/pokemon/blaziken.jpg',
   },
   {
@@ -106,7 +106,7 @@ const products = [
   {
     id: 12,
     title: 'Mudkip',
-    description: 'Water Pokemon, popular for it\'s rendition of Do you like Mudkips song',
+    description: 'Water Pokemon, popular for its rendition of "Do you like Mudkips" song',
     url: '#',
     votes: generateVoteCount(),
     submitterAvatarUrl: 'images/avatars/daniel.jpg',
@@ -124,10 +124,10 @@ const products = [
   {
     id: 14,
     title: 'Sceptile',
-    description: 'Grass Pokemon, able to jump through trees and hunt for prey at incredible speeds',
+    description: 'Grass Pokemon, able to jump through txrees and hunt for prey at incredible speeds',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: 'images/avatars/elyse.jpg',
+    submitterAvatarUrl: 'images/avatars/elyse.png',
     pokemonImageUrl: 'images/pokemon/sceptile.jpg',
   },
   {
@@ -136,7 +136,7 @@ const products = [
     description: 'Water Pokemon, one of the three Legendary Pokemon spawned from Ho-oh, known to bring peace throughout the lands',
     url: '#',
     votes: generateVoteCount(),
-    submitterAvatarUrl: 'images/avatars/kristy.jpg',
+    submitterAvatarUrl: 'images/avatars/kristy.png',
     pokemonImageUrl: 'images/pokemon/suicune.jpg',
   },
   {
@@ -146,7 +146,7 @@ const products = [
     url: '#',
     votes: generateVoteCount(),
     submitterAvatarUrl: 'images/avatars/jenny.jpg',
-    pokemonImageUrl: 'images/pokemon/togetkiss.jpg',
+    pokemonImageUrl: 'images/pokemon/togekiss.jpg',
   },
   {
     id: 17,
@@ -173,9 +173,9 @@ const products = [
     url: '#',
     votes: generateVoteCount(),
     submitterAvatarUrl: 'images/avatars/steve.jpg',
-    pokemonImageUrl: 'images/pokemon/mew.jpg',
+    pokemonImageUrl: 'images/pokemon/venusaur.jpg',
   },
 ]
 
-return {products : products};
+return {pokemon : pokemon};
 }()); 

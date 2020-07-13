@@ -1,23 +1,41 @@
-class ProductList extends React.Component {
+class PokemonList extends React.Component {
     render() {
-        const product = Seed.products[0];
+        // implicit return
+        /*
+        const pokemon = Seed.products.sort((a,b) => (
+            b.votes - a.votes
+        )) 
+        */
+    //    Create a copy of the array to not mutate main array
+       let copyOfPokemon = Array.prototype.slice.call(Seed.pokemon);
+       console.log("Copy of Array", copyOfPokemon)
+       console.log("Main Array ", Seed.pokemon);
+        const pokemons = copyOfPokemon.sort((a, b) => {
+            return (b.votes - a.votes)
+        })
+        // productComponents Array
+        const pokemonComponents = copyOfPokemon.map((pokemon) => {
+            return <Pokemon 
+            // Key is used as a unique binding for each component
+            key= {'pokemon- ' + pokemon.id}
+            id={pokemon.id}
+            title={pokemon.title}
+            description={pokemon.description}
+            url={pokemon.url}
+            votes={pokemon.votes}
+            submitterAvatarUrl={pokemon.submitterAvatarUrl}
+            pokemonImageUrl={pokemon.pokemonImageUrl}
+        />
+        });
         return (
             <div className='ui unstackable items'>
-                <Product 
-                    id={product.id}
-                    title={product.title}
-                    description={product.description}
-                    url={product.url}
-                    votes={product.votes}
-                    submitterAvatarUrl={product.submitterAvatarUrl}
-                    pokemonImageUrl={product.pokemonImageUrl}
-                />
+                {pokemonComponents}
             </div>
         )
     }
 }
 
-class Product extends React.Component {
+class Pokemon extends React.Component {
     render() {
         return(
             <div className='item'>
@@ -50,6 +68,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-    <ProductList />,
+    <PokemonList />,
     document.getElementById('content')
 )
