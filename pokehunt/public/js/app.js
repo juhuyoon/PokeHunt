@@ -1,4 +1,8 @@
 class PokemonList extends React.Component {
+    // passing the function down to the child component 
+    handlePokemonUpVote(pokemonId) {
+        console.log(pokemonId + ' was upvoted');
+    }
     render() {
         // implicit return
         /*
@@ -7,11 +11,13 @@ class PokemonList extends React.Component {
         )) 
         */
     //    Create a copy of the array to not mutate main array
+    //    Note: this is a shallow copy, there is also a deep copy. 
        let copyOfPokemon = Array.prototype.slice.call(Seed.pokemon);
        console.log("Copy of Array", copyOfPokemon)
        console.log("Main Array ", Seed.pokemon);
         const pokemons = copyOfPokemon.sort((a, b) => {
             return (b.votes - a.votes)
+            // Compare function of Array.prototype.sort()
         })
         // productComponents Array
         const pokemonComponents = copyOfPokemon.map((pokemon) => {
@@ -25,6 +31,8 @@ class PokemonList extends React.Component {
             votes={pokemon.votes}
             submitterAvatarUrl={pokemon.submitterAvatarUrl}
             pokemonImageUrl={pokemon.pokemonImageUrl}
+            // passing function down as a prop
+            onVote={this.handlePokemonUpVote}
         />
         });
         return (
@@ -36,7 +44,18 @@ class PokemonList extends React.Component {
 }
 
 class Pokemon extends React.Component {
+    constructor(props) {
+        super(props);
+        // When defining custom methods, must perform binding pattern 
+        // inside constructor() so that this references component
+        this.handleUpVote = this.handleUpVote.bind(this);
+    }
+
+    handleUpVote() {
+        this.props.onVote(this.props.id);
+    }
     render() {
+        // When working inside render, this is always bound to component. handleUpVote() => returns null. 
         return(
             <div className='item'>
                 <div className='image'> 
@@ -44,7 +63,7 @@ class Pokemon extends React.Component {
                 </div>
                 <div className='middle aligned content'>
                     <div className='header'>
-                        <a>
+                        <a onClick={this.handleUpVote}>
                             <i className='larget caret up icon' />
                         </a>
                         {this.props.votes}
