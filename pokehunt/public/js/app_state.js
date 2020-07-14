@@ -1,15 +1,18 @@
 class PokemonList extends React.Component {
-    constructor(props) {
-        super(props);
-        // Good practice to initialize components with "empty states"
-        // Should consider this.state object as immutable
-        // Only modifies through using this.setState()
-        this.state = {
-            pokemons: [],
-        }
-
-        this.handlePokemonUpVote = this.handlePokemonUpVote.bind(this);
+    state = {
+        pokemons: [],
     }
+    // constructor(props) {
+    //     super(props);
+    //     // Good practice to initialize components with "empty states"
+    //     // Should consider this.state object as immutable
+    //     // Only modifies through using this.setState()
+    //     this.state = {
+    //         pokemons: [],
+    //     }
+
+    //     this.handlePokemonUpVote = this.handlePokemonUpVote.bind(this);
+    // }
 
     componentDidMount() {
         // setState() is asynchronous
@@ -17,7 +20,7 @@ class PokemonList extends React.Component {
         this.setState({pokemons: Seed.pokemons})
     }
     // passing the function down to the child component 
-    handlePokemonUpVote(pokemonId) {
+    handlePokemonUpVote = (pokemonId) => {
         // Traverses the array AND returns a NEW array as opposed to 
         // changing directly the array in state. 
         const pokemonObjects  = this.state.pokemons.map((pokemon) => {
@@ -64,14 +67,15 @@ class PokemonList extends React.Component {
 }
 
 class Pokemon extends React.Component {
-    constructor(props) {
-        super(props);
-        // When defining custom methods, must perform binding pattern 
-        // inside constructor() so that this references component
-        this.handleUpVote = this.handleUpVote.bind(this);
-    }
+    // constructor(props) {
+    //     super(props);
+    //     // When defining custom methods, must perform binding pattern 
+    //     // inside constructor() so that this references component
+    //     this.handleUpVote = this.handleUpVote.bind(this);
+    // }
 
-    handleUpVote() {
+    // By using arrow function, bind this to the component
+    handleUpVote = () => {
         this.props.onVote(this.props.id);
     }
     render() {
